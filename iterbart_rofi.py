@@ -10,6 +10,8 @@
 
 import json
 from pprint import pprint
+import subprocess
+import os
 
 # Hard-code for now
 JSON_URL = "/home/teodorlu/.local/share/iterbart-rofi/links.json"
@@ -28,13 +30,34 @@ def read_json_file(path):
     with open(path, "r") as f:
         return json.load(f)
 
+def is_valid_link(link):
+    return (
+        ITEM_TITLE in link
+        and ITEM_HREF in link
+    )
 
-links = read_json_file(JSON_URL)[ITERBART_LINKS]
+links = filter(
+    is_valid_link,
+    read_json_file(JSON_URL)[ITERBART_LINKS]
+)
 
-for item in links[:4]:
-    print(f'{item[ITEM_HREF]=}')
-    print(f'{item[ITEM_TITLE]=}')
+links_by_title = {}
 
+for item in links:
+    links_by_title[item[ITEM_TITLE]] = item
+    pass
 
+title_lines = '"' + "\n".join(links_by_title.keys()) + '"'
 
-print(123)
+def bash(cmd):
+    return subprocess.check_output(["bash", "-c", cmd])
+
+target = subprocess.check_output(["bash", "-c", f"echo {title_lines} | rofi -dmenu"]).decode("utf-8").strip()
+
+href = links_by_title[target][ITEM_HREF]
+
+browser = "xdg-open"
+if "BROWSER" in os.environ:
+    browser = os.environ["BROWSER"]
+
+bash(f"nohup \"{browser}\" '{href}' &")
