@@ -27,6 +27,8 @@ hands off the keyboard makes you less of a 1337 haxxor?
 
 Behold, you can now keep your hands on the keyboard.
 
+![](usage-2020-01-19.gif)
+
 ## Requirements
 
 iterbart-rofi requires `python3`, `curl` and `rofi`.
