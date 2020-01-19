@@ -56,4 +56,4 @@ browser = "xdg-open"
 if "BROWSER" in os.environ:
     browser = os.environ["BROWSER"]
 
-bash(f"nohup \"{browser}\" '{href}' &")
+bash(f"nohup \"{browser}\" '{href}' >/dev/null 2>&1 &")
