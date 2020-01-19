@@ -6,9 +6,9 @@ Don't ask me.
 
 ## Requirements
 
-iterbart-rofi requires `curl` and `rofi`.
+iterbart-rofi requires `python3`, `curl` and `rofi`.
 
-On Ubuntu, try `sudo apt install curl rofi`.
+On Ubuntu, try `sudo apt install python3 curl rofi`.
 
 ## Installing
 
