@@ -1,8 +1,9 @@
 # Keyboard-driven interface to Iterbart
 
-Why use the mouse, you say?
+Like [Iterbart](https://iterbart.app.iterate.no/)? But feel like taking your
+hands off the keyboard makes you less of a 1337 haxxor?
 
-Don't ask me.
+Behold, you can now keep your hands on the keyboard.
 
 ## Requirements
 
