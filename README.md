@@ -14,7 +14,7 @@ On Ubuntu, try `sudo apt install python3 curl rofi`.
 
 Trust me?
 
-    curl https://raw.githubusercontent.com/iterate/iterbart-rofi/master/install.sh | bash
+    curl -s https://raw.githubusercontent.com/iterate/iterbart-rofi/master/install.sh | bash
 
 Otherwise:
 
