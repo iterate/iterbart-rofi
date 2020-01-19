@@ -2,19 +2,15 @@
 
 ## TODOS
 
-# Download config from the web
-# Save config in ~/.local/share/iterbart-rofi
-# Refresh / re-download
-
-# For now, just download it manually, perhaps?
+# Re-download JSON file once in a while?
+# Auto-update?
 
 import json
 from pprint import pprint
 import subprocess
 import os
 
-# Hard-code for now
-JSON_URL = "/home/teodorlu/.local/share/iterbart-rofi/links.json"
+JSON_URL = os.path.expanduser("~/.local/share/iterbart-rofi/links.json")
 
 # Required props
 ITERBART_LINKS = "links"
