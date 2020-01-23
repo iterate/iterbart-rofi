@@ -48,7 +48,7 @@ title_lines = '"' + "\n".join(links_by_title.keys()) + '"'
 def bash(cmd):
     return subprocess.check_output(["bash", "-c", cmd])
 
-target = subprocess.check_output(["bash", "-c", f"echo {title_lines} | rofi -dmenu"]).decode("utf-8").strip()
+target = subprocess.check_output(["bash", "-c", f"echo {title_lines} | rofi -i -dmenu"]).decode("utf-8").strip()
 
 href = links_by_title[target][ITEM_HREF]
 
