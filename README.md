@@ -35,7 +35,7 @@ iterbart-rofi requires `python3`, `curl` and `rofi`.
 
 On Ubuntu, try `sudo apt install python3 curl rofi`.
 
-Mac is unfortunately not yet supported. See #1.
+Mac is unfortunately not yet supported. See https://github.com/iterate/iterbart-rofi/issues/1
 
 [choose-homepage]: https://github.com/chipsenkbeil/choose
 
