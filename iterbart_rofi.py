@@ -5,10 +5,11 @@
 # Re-download JSON file once in a while?
 # Auto-update?
 
-import json
 from pprint import pprint
-import subprocess
+import json
 import os
+import subprocess
+import sys
 
 JSON_URL = os.path.expanduser("~/.local/share/iterbart-rofi/links.json")
 
@@ -45,11 +46,18 @@ def main():
     def bash(cmd):
         return subprocess.check_output(["bash", "-c", cmd])
 
-    target = (
-        subprocess.check_output(["bash", "-c", f"echo {title_lines} | rofi -i -dmenu"])
-        .decode("utf-8")
-        .strip()
-    )
+    try:
+        target = (
+            subprocess.check_output(
+                ["bash", "-c", f"echo {title_lines} | rofi -i -dmenu"]
+            )
+            .decode("utf-8")
+            .strip()
+        )
+    except subprocess.CalledProcessError:
+        # User pressed escape in rofi, or aborted otherwise
+        print("No site selected, aborting")
+        return 0
 
     href = links_by_title[target][ITEM_HREF]
 
@@ -59,7 +67,8 @@ def main():
         browser = os.environ["BROWSER"]
 
     bash(f"nohup \"{browser}\" '{href}' >/dev/null 2>&1 &")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
