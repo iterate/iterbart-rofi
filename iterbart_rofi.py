@@ -10,8 +10,10 @@ import json
 import os
 import subprocess
 import sys
+import urllib.request
 
 JSON_URL = os.path.expanduser("~/.local/share/iterbart-rofi/links.json")
+ITERBART_LINKS_JSON_URL = "https://iterbart.app.iterate.no/data/links.json"
 
 # Required props
 ITERBART_LINKS = "links"
@@ -28,12 +30,20 @@ def read_json_file(path):
         return json.load(f)
 
 
+def read_json_from_url(url):
+    with urllib.request.urlopen(ITERBART_LINKS_JSON_URL) as handle:
+        return json.loads(handle.read())
+
+
 def is_valid_link(link):
     return ITEM_TITLE in link and ITEM_HREF in link
 
 
-def main():
-    links = filter(is_valid_link, read_json_file(JSON_URL)[ITERBART_LINKS])
+def iterbart_rofi():
+    links = filter(
+        is_valid_link, read_json_from_url(ITERBART_LINKS_JSON_URL)[ITERBART_LINKS]
+    )
+    # links = filter(is_valid_link, read_json_file(JSON_URL)[ITERBART_LINKS])
 
     links_by_title = {}
 
@@ -70,5 +80,30 @@ def main():
     return 0
 
 
+def hot():
+    """Entrypoint for hotloaded development
+
+    echo iterbart_rofi.py | hotload iterbart_rofi.py hot
+    """
+    import urllib.request
+
+    with urllib.request.urlopen(ITERBART_LINKS_JSON_URL) as f:
+        links = json.loads(f.read())
+
+
+def main():
+    """Just launch iterbart_rofi, except if hot is provided explicitly"""
+    hot_running = "HOTLOAD_RUNNING"
+    if hot_running in os.environ and os.environ[hot_running] == hot_running:
+        return hot()
+    else:
+        return iterbart_rofi()
+
+
 if __name__ == "__main__":
     sys.exit(main())
+elif (
+    "HOTLOAD_RUNNING" in os.environ
+    and os.environ["HOTLOAD_RUNNING"] == "HOTLOAD_RUNNING"
+):
+    hot()
