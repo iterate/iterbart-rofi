@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eu
 
 BINFOLDER="${HOME}/.local/bin"
 DATAFOLDER="${HOME}/.local/share/iterbart-rofi"
