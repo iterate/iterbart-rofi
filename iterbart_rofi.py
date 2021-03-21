@@ -102,8 +102,5 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
-elif (
-    "HOTLOAD_RUNNING" in os.environ
-    and os.environ["HOTLOAD_RUNNING"] == "HOTLOAD_RUNNING"
-):
+elif "HOTLOAD_RUNNING" in os.environ:
     hot()
