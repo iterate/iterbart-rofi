@@ -48,9 +48,7 @@ Trust me?
 Otherwise:
 
     mkdir -p ~/.local/bin
-    mkdir -p ~/.local/share/iterbart-rofi
     curl -o ~/.local/bin/iterbart https://raw.githubusercontent.com/iterate/iterbart-rofi/master/iterbart_rofi.py
-    curl -o ~/.local/share/iterbart-rofi/links.json https://iterbart.app.iterate.no/data/links.json
     chmod +x ~/.local/bin/iterbart
 
 ## Updating
@@ -61,4 +59,4 @@ Rerun install:
 
 ## Uninstalling
 
-    rm ~/.local/bin/iterbart ~/.local/share/iterbart-rofi/links.json
+    rm ~/.local/bin/iterbart
