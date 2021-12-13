@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 
-## TODOS
-
-# Re-download JSON file once in a while?
-# Auto-update?
-
 from pprint import pprint
 import json
 import os
