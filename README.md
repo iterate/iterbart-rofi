@@ -51,6 +51,14 @@ Otherwise:
     curl -o ~/.local/bin/iterbart https://raw.githubusercontent.com/iterate/iterbart-rofi/master/iterbart_rofi.py
     chmod +x ~/.local/bin/iterbart
 
+## Installing for development
+
+Creates a symlink on your path to `iterbart_rofi.py` here - so that you can use
+Iterbart live, while developing on it.
+
+    mkdir -p ~/.local/bin
+    ln -srf ./iterbart_rofi ~/.local/bin/iterbart
+
 ## Updating
 
 Rerun install:
