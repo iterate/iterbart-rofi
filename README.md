@@ -33,7 +33,8 @@ Behold, you can now keep your hands on the keyboard.
 
 iterbart-rofi requires `python3`, `curl` and `rofi`.
 
-On Ubuntu, try `sudo apt install python3 curl rofi`.
+- On Ubuntu, try `sudo apt install python3 curl rofi`
+- On Arch Linux, try `sudo pacman -S python curl rofi`
 
 Mac is unfortunately not yet supported. See https://github.com/iterate/iterbart-rofi/issues/1
 
@@ -61,7 +62,7 @@ Iterbart live, while developing on it.
 
 ## Updating
 
-Rerun install:
+Simply rerun the installation:
 
     curl -s https://raw.githubusercontent.com/iterate/iterbart-rofi/master/install.sh | bash
 
